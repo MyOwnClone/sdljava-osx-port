@@ -1,6 +1,3 @@
 *.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+sdljava-SDL-1.2.15-r2.patch
+*.o
