@@ -1,0 +1,35 @@
+***************
+*** 111,126 ****
+  extern int TTF_Init(void);
+  extern TTF_Font *TTF_OpenFont(char const *,int);
+  extern TTF_Font *TTF_OpenFontIndex(char const *,int,long);
+- extern int TTF_GetFontStyle(TTF_Font *);
+  extern void TTF_SetFontStyle(TTF_Font *,int);
+- extern int TTF_FontHeight(TTF_Font *);
+- extern int TTF_FontAscent(TTF_Font *);
+- extern int TTF_FontDescent(TTF_Font *);
+- extern int TTF_FontLineSkip(TTF_Font *);
+- extern long TTF_FontFaces(TTF_Font *);
+- extern int TTF_FontFaceIsFixedWidth(TTF_Font *);
+- extern char *TTF_FontFaceFamilyName(TTF_Font *);
+- extern char *TTF_FontFaceStyleName(TTF_Font *);
+  extern int TTF_GlyphMetrics(TTF_Font *,Uint16,int *,int *,int *,int *,int *);
+  extern int TTF_SizeText(TTF_Font *,char const *,int *,int *);
+  extern int TTF_SizeUTF8(TTF_Font *,char const *,int *,int *);
+--- 111,126 ----
+  extern int TTF_Init(void);
+  extern TTF_Font *TTF_OpenFont(char const *,int);
+  extern TTF_Font *TTF_OpenFontIndex(char const *,int,long);
++ extern int TTF_GetFontStyle(const TTF_Font *); // added const
+  extern void TTF_SetFontStyle(TTF_Font *,int);
++ extern int TTF_FontHeight(const TTF_Font *); // added const
++ extern int TTF_FontAscent(const TTF_Font *); // added const
++ extern int TTF_FontDescent(const TTF_Font *); // added const
++ extern int TTF_FontLineSkip(const TTF_Font *); // added const
++ extern long TTF_FontFaces(const TTF_Font *); // added const
++ extern int TTF_FontFaceIsFixedWidth(const TTF_Font *); // added const
++ extern char *TTF_FontFaceFamilyName(const TTF_Font *); // added const
++ extern char *TTF_FontFaceStyleName(const TTF_Font *); // added const
+  extern int TTF_GlyphMetrics(TTF_Font *,Uint16,int *,int *,int *,int *,int *);
+  extern int TTF_SizeText(TTF_Font *,char const *,int *,int *);
+  extern int TTF_SizeUTF8(TTF_Font *,char const *,int *,int *);

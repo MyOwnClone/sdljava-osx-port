@@ -1,0 +1,23 @@
+***************
+*** 851,860 ****
+  extern int SDL_GetGammaRamp(Uint16 *,Uint16 *,Uint16 *);
+  extern int SDL_SetColors(SDL_Surface *,SDL_Color *,int,int);
+  extern int SDL_SetPalette(SDL_Surface *,int,SDL_Color *,int,int);
+- extern Uint32 SDL_MapRGB(SDL_PixelFormat *,Uint8,Uint8,Uint8);
+- extern Uint32 SDL_MapRGBA(SDL_PixelFormat *,Uint8,Uint8,Uint8,Uint8);
+- extern void SDL_GetRGB(Uint32,SDL_PixelFormat *,Uint8 *,Uint8 *,Uint8 *);
+- extern void SDL_GetRGBA(Uint32,SDL_PixelFormat *,Uint8 *,Uint8 *,Uint8 *,Uint8 *);
+  extern SDL_Surface *SDL_CreateRGBSurface(Uint32,int,int,int,Uint32,Uint32,Uint32,Uint32);
+  extern void SDL_FreeSurface(SDL_Surface *);
+  extern int SDL_LockSurface(SDL_Surface *);
+--- 851,860 ----
+  extern int SDL_GetGammaRamp(Uint16 *,Uint16 *,Uint16 *);
+  extern int SDL_SetColors(SDL_Surface *,SDL_Color *,int,int);
+  extern int SDL_SetPalette(SDL_Surface *,int,SDL_Color *,int,int);
++ extern Uint32 SDL_MapRGB(const SDL_PixelFormat const *,Uint8,Uint8,Uint8); // added const
++ extern Uint32 SDL_MapRGBA(const SDL_PixelFormat const *,Uint8,Uint8,Uint8,Uint8); // added const
++ extern void SDL_GetRGB(Uint32,const SDL_PixelFormat const *,Uint8 *,Uint8 *,Uint8 *); // added const
++ extern void SDL_GetRGBA(Uint32,const SDL_PixelFormat const *,Uint8 *,Uint8 *,Uint8 *,Uint8 *); // added const
+  extern SDL_Surface *SDL_CreateRGBSurface(Uint32,int,int,int,Uint32,Uint32,Uint32,Uint32);
+  extern void SDL_FreeSurface(SDL_Surface *);
+  extern int SDL_LockSurface(SDL_Surface *);
