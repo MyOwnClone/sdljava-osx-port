@@ -14,7 +14,7 @@ class SWIG_SDLTTFJNI {
     try {
       // if set don't loadLibrary ourselves, let client of library do it
       if (System.getProperty("sdljava.bootclasspath") == null) {
-        System.loadLibrary(System.getProperty("user.dir")+ "/" + "libsdljava_ttf.so");
+        System.load(System.getProperty("user.dir")+ "/" + "libsdljava_ttf.so");
       }
     } catch (UnsatisfiedLinkError e) {
       System.err.println("Native code library failed to load. \n" + e);

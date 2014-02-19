@@ -16,7 +16,7 @@ class SWIG_SDLMixerJNI {
     try {
       // if set don't loadLibrary ourselves, let client of library do it
       if (System.getProperty("sdljava.bootclasspath") == null) {
-        System.loadLibrary(System.getProperty("user.dir")+ "/" + "libsdljava_mixer.so");
+        System.load(System.getProperty("user.dir")+ "/" + "libsdljava_mixer.so");
       }
     } catch (UnsatisfiedLinkError e) {
       System.err.println("Native code library failed to load. \n" + e);
