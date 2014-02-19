@@ -17,7 +17,7 @@ public class GlewJNI {
       // if set don't loadLibrary ourselves, let client of library do it
       if (System.getProperty("sdljava.bootclasspath") == null &&
 	  System.getProperty("gljava.bootclasspath") == null) {
-	System.loadLibrary("gljava");
+	System.loadLibrary(System.getProperty("user.dir")+ "/" + "libgljava.so");
 	    
 	SWIG_glew_init();
       }

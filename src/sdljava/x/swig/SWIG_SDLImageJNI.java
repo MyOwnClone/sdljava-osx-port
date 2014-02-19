@@ -16,7 +16,7 @@ class SWIG_SDLImageJNI {
     try {
       // if set don't loadLibrary ourselves, let client of library do it
       if (System.getProperty("sdljava.bootclasspath") == null) {
-        System.loadLibrary("sdljava_image");
+        System.loadLibrary(System.getProperty("user.dir")+ "/" + "libsdljava_image.so");
       }
     } catch (UnsatisfiedLinkError e) {
       System.err.println("Native code library failed to load. \n" + e);

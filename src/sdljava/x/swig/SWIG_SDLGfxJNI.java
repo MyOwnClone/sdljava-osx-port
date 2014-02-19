@@ -16,7 +16,7 @@ class SWIG_SDLGfxJNI {
     try {
       // if set don't loadLibrary ourselves, let client of library do it
       if (System.getProperty("sdljava.bootclasspath") == null) {
-        System.loadLibrary("sdljava_gfx");
+        System.loadLibrary(System.getProperty("user.dir")+ "/" + "libsdljava_gfx.so");
       }
     } catch (UnsatisfiedLinkError e) {
       System.err.println("Native code library failed to load. \n" + e);
