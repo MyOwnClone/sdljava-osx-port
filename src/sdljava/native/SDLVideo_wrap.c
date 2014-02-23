@@ -2651,6 +2651,21 @@ JNIEXPORT jlong JNICALL Java_sdljava_x_swig_SWIG_1SDLVideoJNI_SDL_1ListModes(JNI
     return jresult;
 }
 
+#include <dlfcn.h>  //To make it work on mac
+
+// This must be called before playing with SDL, else it won't work on osx.
+// fix found on http://stackoverflow.com/questions/12641755/sdl-video-init-causes-exception-on-mac-os-x-10-8
+
+void pre_init()
+{
+    void* cocoa_lib;
+
+    cocoa_lib = dlopen( "/System/Library/Frameworks/Cocoa.framework/Cocoa", RTLD_LAZY );
+    void (*nsappload)(void);
+    nsappload = (void(*)()) dlsym( cocoa_lib, "NSApplicationLoad");
+    nsappload();
+}
+
 
 JNIEXPORT jlong JNICALL Java_sdljava_x_swig_SWIG_1SDLVideoJNI_SDL_1SetVideoMode(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2, jint jarg3, jlong jarg4) {
     jlong jresult = 0 ;
@@ -2666,7 +2681,14 @@ JNIEXPORT jlong JNICALL Java_sdljava_x_swig_SWIG_1SDLVideoJNI_SDL_1SetVideoMode(
     arg2 = (int)jarg2; 
     arg3 = (int)jarg3; 
     arg4 = (Uint32)jarg4; 
+	
+	pre_init();
+	
+	//printf("arg1: %d\n, arg2: %d\n, arg3: %d\n, arg4: %d\n", arg1, arg2, arg3, arg4);
+	//printf("Java_sdljava_x_swig_SWIG_1SDLVideoJNI_SDL_1SetVideoMode called");
+	
     result = (SDL_Surface *)SDL_SetVideoMode(arg1,arg2,arg3,arg4);
+	//result = NULL;
     
     *(SDL_Surface **)&jresult = result; 
     return jresult;
